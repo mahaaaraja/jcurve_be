@@ -1,4 +1,4 @@
-name = "jcurve"
+name = "jcurvebe"
 type = "javascript"
 main = "server.js"
 compatibility_date = "2025-02-27"
