@@ -1,0 +1,3694 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Jcurve APIs",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://qaapi.jcurve.tech/api/v1",
+      "description": "QA",
+      "variables": {}
+    },
+    {
+      "url": "https://api.jcurve.tech/api/v1",
+      "description": "Production",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/validateEmail": {
+      "post": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "send validation link to email",
+        "operationId": "sendvalidationlinktoemail",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/sendvalidationlinktoemailrequest"
+                  },
+                  {
+                    "example": {
+                      "email": "arjunnair@yopmail.com"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "arjunnair@yopmail.com"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/verifyEmail/{token}": {
+      "put": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "verify email",
+        "operationId": "verifyemail",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/signup": {
+      "post": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "signup user",
+        "operationId": "signupuser",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/signupuserrequest"
+                  },
+                  {
+                    "example": {
+                      "email": "arjunnair@yopmail.com",
+                      "firstName": "Arjun",
+                      "lastName": "nair(Dummy)",
+                      "password": "Arjun@123"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "arjunnair@yopmail.com",
+                "firstName": "Arjun",
+                "lastName": "nair(Dummy)",
+                "password": "Arjun@123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/webLogin": {
+      "post": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "login",
+        "operationId": "login",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/loginrequest"
+                  },
+                  {
+                    "example": {
+                      "email": "arjunnair@yopmail.com",
+                      "password": "Arjun@123"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "arjunnair@yopmail.com",
+                "password": "Arjun@123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/forgotPassword": {
+      "post": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "forgot password",
+        "operationId": "forgotpassword",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/forgotpasswordrequest"
+                  },
+                  {
+                    "example": {
+                      "email": "arjunnair@yopmail.com"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "arjunnair@yopmail.com"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/verifyForgotPasswordToken/{token}": {
+      "put": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "verify forgot password token",
+        "operationId": "verifyforgotpasswordtoken",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/updatePassword/{userId}/{token}": {
+      "put": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "update password",
+        "operationId": "updatepassword",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updatepasswordrequest"
+                  },
+                  {
+                    "example": {
+                      "password": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "password": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/changePassword": {
+      "post": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "change password",
+        "operationId": "changepassword",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/changepasswordrequest"
+                  },
+                  {
+                    "example": {
+                      "oldPassword": "",
+                      "newPassword": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "oldPassword": "",
+                "newPassword": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/componentVisibilitySettings": {
+      "get": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "get component visibility settings",
+        "operationId": "getcomponentvisibilitysettings",
+        "parameters": [
+          {
+            "name": "portalName",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "candidate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/refreshTokens": {
+      "get": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "refresh token",
+        "operationId": "refreshtoken",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "Candidate Registration & Login"
+        ],
+        "summary": "Logout",
+        "operationId": "Logout",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/auth/linkedin": {
+      "get": {
+        "tags": [
+          "LinkedIn auth"
+        ],
+        "summary": "linkedin auth",
+        "operationId": "linkedinauth",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/profilePicture": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "get profile picture",
+        "operationId": "getprofilepicture",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "update profile picture",
+        "operationId": "updateprofilepicture",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "profilePicture"
+                ],
+                "type": "object",
+                "properties": {
+                  "profilePicture": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/contactInformation": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "get contact information",
+        "operationId": "getcontactinformation",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "update contact information",
+        "operationId": "updatecontactinformation",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updatecontactinformationrequest"
+                  },
+                  {
+                    "example": {
+                      "firstName": "",
+                      "lastName": "",
+                      "countryCode": "",
+                      "phoneNumber": "",
+                      "addressLine1": "",
+                      "addressLine2": "",
+                      "city": "",
+                      "postalCode": "",
+                      "country": "",
+                      "state": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "firstName": "",
+                "lastName": "",
+                "countryCode": "",
+                "phoneNumber": "",
+                "addressLine1": "",
+                "addressLine2": "",
+                "city": "",
+                "postalCode": "",
+                "country": "",
+                "state": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/workHistory": {
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "insert work history",
+        "operationId": "insertworkhistory",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/insertworkhistoryrequest"
+                  },
+                  {
+                    "example": {
+                      "jobTitle": "",
+                      "companyId": "",
+                      "otherCompanyName": "",
+                      "employmentType": "",
+                      "location": "",
+                      "isCurrent": false,
+                      "startDate": "",
+                      "endDate": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "jobTitle": "",
+                "companyId": "",
+                "otherCompanyName": "",
+                "employmentType": "",
+                "location": "",
+                "isCurrent": false,
+                "startDate": "",
+                "endDate": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "get work history",
+        "operationId": "getworkhistory",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "update work history",
+        "operationId": "updateworkhistory",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updateworkhistoryrequest"
+                  },
+                  {
+                    "example": {
+                      "experienceId": "",
+                      "jobTitle": "",
+                      "companyId": "",
+                      "otherCompanyName": "",
+                      "employmentType": "",
+                      "location": "",
+                      "isCurrent": false,
+                      "startDate": "",
+                      "endDate": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "experienceId": "",
+                "jobTitle": "",
+                "companyId": "",
+                "otherCompanyName": "",
+                "employmentType": "",
+                "location": "",
+                "isCurrent": false,
+                "startDate": "",
+                "endDate": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/deleteWorkHistory/{experienceId}": {
+      "delete": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "delete work history",
+        "operationId": "deleteworkhistory",
+        "parameters": [
+          {
+            "name": "experienceId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/education": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "get education details",
+        "operationId": "geteducationdetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "post education details",
+        "operationId": "posteducationdetails",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/posteducationdetailsrequest"
+                  },
+                  {
+                    "example": {
+                      "collegeId": "",
+                      "otherCollegeName": "",
+                      "qualificationId": "",
+                      "otherQualificationName": "",
+                      "specializationId": "",
+                      "otherSpecializationName": "",
+                      "isCurrent": "true",
+                      "startDate": "",
+                      "endDate": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "collegeId": "",
+                "otherCollegeName": "",
+                "qualificationId": "",
+                "otherQualificationName": "",
+                "specializationId": "",
+                "otherSpecializationName": "",
+                "isCurrent": "true",
+                "startDate": "",
+                "endDate": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "update education details",
+        "operationId": "updateeducationdetails",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updateeducationdetailsrequest"
+                  },
+                  {
+                    "example": {
+                      "educationId": "",
+                      "collegeId": "",
+                      "otherCollegeName": "",
+                      "qualificationId": "",
+                      "otherQualificationName": "",
+                      "specializationId": "",
+                      "otherSpecializationName": "",
+                      "isCurrent": "true",
+                      "startDate": "",
+                      "endDate": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "educationId": "",
+                "collegeId": "",
+                "otherCollegeName": "",
+                "qualificationId": "",
+                "otherQualificationName": "",
+                "specializationId": "",
+                "otherSpecializationName": "",
+                "isCurrent": "true",
+                "startDate": "",
+                "endDate": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/deleteEducation/{educationId}": {
+      "delete": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "delete education history",
+        "operationId": "deleteeducationhistory",
+        "parameters": [
+          {
+            "name": "educationId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/selectedUserSkillList": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "get user skills",
+        "operationId": "getuserskills",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/userSkillLevel": {
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "update skill level",
+        "operationId": "updateskilllevel",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updateskilllevelrequest"
+                  },
+                  {
+                    "example": {
+                      "resumeSkillLevel": 7,
+                      "skillId": 31
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "resumeSkillLevel": 7,
+                "skillId": 31
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/resume": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "get resume",
+        "operationId": "getresume",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "update or upload resume",
+        "operationId": "updateoruploadresume",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "resumeFile"
+                ],
+                "type": "object",
+                "properties": {
+                  "resumeFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/resume/{studentId}": {
+      "delete": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "delete resume",
+        "operationId": "deleteresume",
+        "parameters": [
+          {
+            "name": "studentId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/studentPreference": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "studentPreference",
+        "operationId": "studentPreference",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Insert studentPreference",
+        "operationId": "InsertstudentPreference",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InsertstudentPreferenceRequest"
+                  },
+                  {
+                    "example": {
+                      "availability": "0 - 15 Days",
+                      "currentSalary": "31.1",
+                      "employmentType": "Contract",
+                      "expectedSalary": "44.8",
+                      "isRelocate": "true",
+                      "locationPreference": [
+                        "Lucknow",
+                        "Delhi",
+                        "Chennai"
+                      ],
+                      "locations": [
+                        "Lucknow",
+                        "Delhi",
+                        "Chennai"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "availability": "0 - 15 Days",
+                "currentSalary": "31.1",
+                "employmentType": "Contract",
+                "expectedSalary": "44.8",
+                "isRelocate": "true",
+                "locationPreference": [
+                  "Lucknow",
+                  "Delhi",
+                  "Chennai"
+                ],
+                "locations": [
+                  "Lucknow",
+                  "Delhi",
+                  "Chennai"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "update studentPreference",
+        "operationId": "updatestudentPreference",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updatestudentPreferenceRequest"
+                  },
+                  {
+                    "example": {
+                      "availability": "0 - 15 Days",
+                      "currentSalary": "31.1",
+                      "employmentType": "Contract",
+                      "expectedSalary": "44.8",
+                      "isRelocate": "true",
+                      "locationPreference": [
+                        "Lucknow",
+                        "Delhi",
+                        "Chennai"
+                      ],
+                      "locations": [
+                        "Lucknow",
+                        "Delhi",
+                        "Chennai"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "availability": "0 - 15 Days",
+                "currentSalary": "31.1",
+                "employmentType": "Contract",
+                "expectedSalary": "44.8",
+                "isRelocate": "true",
+                "locationPreference": [
+                  "Lucknow",
+                  "Delhi",
+                  "Chennai"
+                ],
+                "locations": [
+                  "Lucknow",
+                  "Delhi",
+                  "Chennai"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/student/profileCompletionPercentage": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "profile completion percentage",
+        "operationId": "profilecompletionpercentage",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/getAvailableJobsCount": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "get available jobs count",
+        "operationId": "getavailablejobscount",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/pursuingRoadmapsCount": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "get pursuing roadmaps count",
+        "operationId": "getpursuingroadmapscount",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/dashboard/certificates": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "certificatesCount",
+        "operationId": "certificatesCount",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/student/certificates": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "studentCertificates",
+        "operationId": "studentCertificates",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/student/userAssessments": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "get user assessments",
+        "operationId": "getuserassessments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/assessmentTestReports": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "get assessment test reports",
+        "operationId": "getassessmenttestreports",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/getJobs": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "getJobs",
+        "operationId": "getJobs",
+        "parameters": [
+          {
+            "name": "employmentType",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Full Time"
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/getjobDetails/{jobId}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "getJobDetails",
+        "operationId": "getJobDetails",
+        "parameters": [
+          {
+            "name": "goalId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "//student/getRoadmaps/{goalId}/{curriculumId}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "getCategoriesByJobs",
+        "operationId": "getCategoriesByJobs",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "goalId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "curriculumId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/getRoadmaps/{categoryId}/{subCategoryId}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "getSubCategoriesByJobs",
+        "operationId": "getSubCategoriesByJobs",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "subCategoryId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/getRoadmaps/{goalId}/{categoryId}/{subCategory}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "getSkillsByJobs",
+        "operationId": "getSkillsByJobs",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "goalId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2
+            }
+          },
+          {
+            "name": "subCategory",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/getRoadmaps/{goalId}/{categoryId}/{subCategory}/{courseId}": {
+      "get": {
+        "tags": [
+          "Jobs"
+        ],
+        "summary": "getCoursesByJobs",
+        "operationId": "getCoursesByJobs",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "goalId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "subCategory",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/getRoadmaps": {
+      "get": {
+        "tags": [
+          "Roadmap"
+        ],
+        "summary": "get roadmaps",
+        "operationId": "getroadmaps",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/getRoadmaps/{goalId}": {
+      "get": {
+        "tags": [
+          "Roadmap"
+        ],
+        "summary": "get roadmap categories",
+        "operationId": "getroadmapcategories",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "goalId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/getRoadmaps/{goalId}/{curriculumId}": {
+      "get": {
+        "tags": [
+          "Roadmap"
+        ],
+        "summary": "get roadmap SubCategories",
+        "operationId": "getroadmapSubCategories",
+        "parameters": [
+          {
+            "name": "goalId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "curriculumId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/getCourseProgress/{courseId}": {
+      "get": {
+        "tags": [
+          "Roadmap"
+        ],
+        "summary": "get youtubeCourseProgress",
+        "operationId": "getyoutubeCourseProgress",
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/setCourseWatchTime": {
+      "put": {
+        "tags": [
+          "Roadmap"
+        ],
+        "summary": "update youtubecourseWatchTimeProgress",
+        "operationId": "updateyoutubecourseWatchTimeProgress",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updateyoutubecourseWatchTimeProgressRequest"
+                  },
+                  {
+                    "example": {
+                      "courseId": 1,
+                      "watchTimeInSec": 250
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "courseId": 1,
+                "watchTimeInSec": 250
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/setCourseProgress": {
+      "put": {
+        "tags": [
+          "Roadmap"
+        ],
+        "summary": "update youtubeCourseProgress",
+        "operationId": "updateyoutubeCourseProgress",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updateyoutubeCourseProgressRequest"
+                  },
+                  {
+                    "example": {
+                      "courseId": 1,
+                      "isCourseCompleted": "True"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "courseId": 1,
+                "isCourseCompleted": "True"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/getJobAssessments": {
+      "get": {
+        "tags": [
+          "Assessment"
+        ],
+        "summary": "get jobAssessments",
+        "description": "assessmentType value should be either \"preRoadmap\" or \"postRoadmap\".",
+        "operationId": "getjobAssessments",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "assessmentType",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "postRoadmap"
+            }
+          },
+          {
+            "name": "assessmentCategory",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Technical"
+            }
+          },
+          {
+            "name": "goalId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/testlifyAssessmentData": {
+      "get": {
+        "tags": [
+          "Assessment"
+        ],
+        "summary": "get testlify assessment data",
+        "operationId": "gettestlifyassessmentdata",
+        "parameters": [
+          {
+            "name": "testlifyAssessmentEmail",
+            "in": "query",
+            "description": "masked email",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/getAssessmentResults/{userAssessmentId}": {
+      "get": {
+        "tags": [
+          "Assessment"
+        ],
+        "summary": "get assessment results (graph data)",
+        "operationId": "getassessmentresults(graphdata)",
+        "parameters": [
+          {
+            "name": "userAssessmentId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 66
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment/addToCart": {
+      "post": {
+        "tags": [
+          "Payment & Cart"
+        ],
+        "summary": "AddToCart",
+        "operationId": "AddToCart",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AddToCartRequest"
+                  },
+                  {
+                    "example": {
+                      "assessmentId": 7,
+                      "jobId": 1
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "assessmentId": 7,
+                "jobId": 1
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment/removeFromCart": {
+      "delete": {
+        "tags": [
+          "Payment & Cart"
+        ],
+        "summary": "RemoveFromCart",
+        "operationId": "RemoveFromCart",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "query",
+            "description": "integer",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 6
+            }
+          },
+          {
+            "name": "itemType",
+            "in": "query",
+            "description": "string. Course or Assessment",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "Assessment"
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment/getCartItems": {
+      "get": {
+        "tags": [
+          "Payment & Cart"
+        ],
+        "summary": "GetCartItems",
+        "operationId": "GetCartItems",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment/myOrders": {
+      "get": {
+        "tags": [
+          "Payment & Cart"
+        ],
+        "summary": "myorders",
+        "operationId": "myorders",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment/applyCouponCode": {
+      "post": {
+        "tags": [
+          "Payment & Cart"
+        ],
+        "summary": "applycoupon code",
+        "operationId": "applycouponcode",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/applycouponcoderequest"
+                  },
+                  {
+                    "example": {
+                      "couponCode": "",
+                      "orderAmount": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "couponCode": "",
+                "orderAmount": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment/paymentLink": {
+      "post": {
+        "tags": [
+          "Payment & Cart"
+        ],
+        "summary": "makepayment",
+        "operationId": "makepayment",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/makepaymentrequest"
+                  },
+                  {
+                    "example": {
+                      "orderId": "",
+                      "orderAmount": "",
+                      "couponId": ""
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "orderId": "",
+                "orderAmount": "",
+                "couponId": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment/getOrderDetails": {
+      "get": {
+        "tags": [
+          "Payment & Cart"
+        ],
+        "summary": "get orderDetails",
+        "operationId": "getorderDetails",
+        "parameters": [
+          {
+            "name": "razorpayPaymentLinkId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/companies": {
+      "get": {
+        "tags": [
+          "Masters  (drop down apis)"
+        ],
+        "summary": "companies",
+        "operationId": "companies",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/student/skillCoursesList": {
+      "get": {
+        "tags": [
+          "Masters  (drop down apis)"
+        ],
+        "summary": "get skills",
+        "operationId": "getskills",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/qualifications": {
+      "get": {
+        "tags": [
+          "Masters  (drop down apis)"
+        ],
+        "summary": "get education qualifications",
+        "operationId": "geteducationqualifications",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/specializations": {
+      "get": {
+        "tags": [
+          "Masters  (drop down apis)"
+        ],
+        "summary": "get education specializations",
+        "operationId": "geteducationspecializations",
+        "parameters": [
+          {
+            "name": "qualificationId",
+            "in": "query",
+            "description": "integer",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/collegesList": {
+      "get": {
+        "tags": [
+          "Masters  (drop down apis)"
+        ],
+        "summary": "get colleges list",
+        "operationId": "getcollegeslist",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "for searching college names",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/jcurveResume": {
+      "get": {
+        "tags": [
+          "JcurveResume"
+        ],
+        "summary": "Get JcurveResume",
+        "operationId": "GetJcurveResume",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/analyzeResumeFile": {
+      "post": {
+        "tags": [
+          "JcurveResume"
+        ],
+        "summary": "Insert ResumeAnalyze",
+        "operationId": "InsertResumeAnalyze",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "jobId",
+                  "userId",
+                  "resumeFile"
+                ],
+                "type": "object",
+                "properties": {
+                  "jobId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "userId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 35
+                  },
+                  "resumeFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/userSkillLevels": {
+      "put": {
+        "tags": [
+          "JcurveResume"
+        ],
+        "summary": "updateUserSkillsLevel",
+        "operationId": "updateUserSkillsLevel",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/updateUserSkillsLevelRequest"
+                  },
+                  {
+                    "example": {
+                      "skillsToUpdate": [
+                        {
+                          "skillId": 104,
+                          "resumeSkillLevel": 9
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "skillsToUpdate": [
+                  {
+                    "skillId": 104,
+                    "resumeSkillLevel": 9
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/student/jcurveResumeContactInfo": {
+      "get": {
+        "tags": [
+          "JcurveResume"
+        ],
+        "summary": "JcurveContactInfo",
+        "operationId": "JcurveContactInfo",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "JcurveResume"
+        ],
+        "summary": "UpdateJcurveContactInfo",
+        "operationId": "UpdateJcurveContactInfo",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "profilePicture",
+                  "firstName",
+                  "lastName",
+                  "city",
+                  "gender",
+                  "countryCode",
+                  "phoneNumber"
+                ],
+                "type": "object",
+                "properties": {
+                  "profilePicture": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  },
+                  "countryCode": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "sendvalidationlinktoemailrequest": {
+        "title": "sendvalidationlinktoemailrequest",
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "arjunnair@yopmail.com"
+        }
+      },
+      "signupuserrequest": {
+        "title": "signupuserrequest",
+        "required": [
+          "email",
+          "firstName",
+          "lastName",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "arjunnair@yopmail.com",
+          "firstName": "Arjun",
+          "lastName": "nair(Dummy)",
+          "password": "Arjun@123"
+        }
+      },
+      "loginrequest": {
+        "title": "loginrequest",
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "arjunnair@yopmail.com",
+          "password": "Arjun@123"
+        }
+      },
+      "forgotpasswordrequest": {
+        "title": "forgotpasswordrequest",
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "arjunnair@yopmail.com"
+        }
+      },
+      "updatepasswordrequest": {
+        "title": "updatepasswordrequest",
+        "required": [
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "password": ""
+        }
+      },
+      "changepasswordrequest": {
+        "title": "changepasswordrequest",
+        "required": [
+          "oldPassword",
+          "newPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "oldPassword": {
+            "type": "string"
+          },
+          "newPassword": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "oldPassword": "",
+          "newPassword": ""
+        }
+      },
+      "updatecontactinformationrequest": {
+        "title": "updatecontactinformationrequest",
+        "required": [
+          "firstName",
+          "lastName",
+          "countryCode",
+          "phoneNumber",
+          "addressLine1",
+          "addressLine2",
+          "city",
+          "postalCode",
+          "country",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "countryCode": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "addressLine1": {
+            "type": "string"
+          },
+          "addressLine2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "firstName": "",
+          "lastName": "",
+          "countryCode": "",
+          "phoneNumber": "",
+          "addressLine1": "",
+          "addressLine2": "",
+          "city": "",
+          "postalCode": "",
+          "country": "",
+          "state": ""
+        }
+      },
+      "insertworkhistoryrequest": {
+        "title": "insertworkhistoryrequest",
+        "required": [
+          "jobTitle",
+          "companyId",
+          "otherCompanyName",
+          "employmentType",
+          "location",
+          "isCurrent",
+          "startDate",
+          "endDate"
+        ],
+        "type": "object",
+        "properties": {
+          "jobTitle": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "otherCompanyName": {
+            "type": "string"
+          },
+          "employmentType": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "isCurrent": {
+            "type": "boolean"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "jobTitle": "",
+          "companyId": "",
+          "otherCompanyName": "",
+          "employmentType": "",
+          "location": "",
+          "isCurrent": false,
+          "startDate": "",
+          "endDate": ""
+        }
+      },
+      "updateworkhistoryrequest": {
+        "title": "updateworkhistoryrequest",
+        "required": [
+          "experienceId",
+          "jobTitle",
+          "companyId",
+          "otherCompanyName",
+          "employmentType",
+          "location",
+          "isCurrent",
+          "startDate",
+          "endDate"
+        ],
+        "type": "object",
+        "properties": {
+          "experienceId": {
+            "type": "string"
+          },
+          "jobTitle": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "otherCompanyName": {
+            "type": "string"
+          },
+          "employmentType": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "isCurrent": {
+            "type": "boolean"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "experienceId": "",
+          "jobTitle": "",
+          "companyId": "",
+          "otherCompanyName": "",
+          "employmentType": "",
+          "location": "",
+          "isCurrent": false,
+          "startDate": "",
+          "endDate": ""
+        }
+      },
+      "posteducationdetailsrequest": {
+        "title": "posteducationdetailsrequest",
+        "required": [
+          "collegeId",
+          "otherCollegeName",
+          "qualificationId",
+          "otherQualificationName",
+          "specializationId",
+          "otherSpecializationName",
+          "isCurrent",
+          "startDate",
+          "endDate"
+        ],
+        "type": "object",
+        "properties": {
+          "collegeId": {
+            "type": "string"
+          },
+          "otherCollegeName": {
+            "type": "string"
+          },
+          "qualificationId": {
+            "type": "string"
+          },
+          "otherQualificationName": {
+            "type": "string"
+          },
+          "specializationId": {
+            "type": "string"
+          },
+          "otherSpecializationName": {
+            "type": "string"
+          },
+          "isCurrent": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "collegeId": "",
+          "otherCollegeName": "",
+          "qualificationId": "",
+          "otherQualificationName": "",
+          "specializationId": "",
+          "otherSpecializationName": "",
+          "isCurrent": "true",
+          "startDate": "",
+          "endDate": ""
+        }
+      },
+      "updateeducationdetailsrequest": {
+        "title": "updateeducationdetailsrequest",
+        "required": [
+          "educationId",
+          "collegeId",
+          "otherCollegeName",
+          "qualificationId",
+          "otherQualificationName",
+          "specializationId",
+          "otherSpecializationName",
+          "isCurrent",
+          "startDate",
+          "endDate"
+        ],
+        "type": "object",
+        "properties": {
+          "educationId": {
+            "type": "string"
+          },
+          "collegeId": {
+            "type": "string"
+          },
+          "otherCollegeName": {
+            "type": "string"
+          },
+          "qualificationId": {
+            "type": "string"
+          },
+          "otherQualificationName": {
+            "type": "string"
+          },
+          "specializationId": {
+            "type": "string"
+          },
+          "otherSpecializationName": {
+            "type": "string"
+          },
+          "isCurrent": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "educationId": "",
+          "collegeId": "",
+          "otherCollegeName": "",
+          "qualificationId": "",
+          "otherQualificationName": "",
+          "specializationId": "",
+          "otherSpecializationName": "",
+          "isCurrent": "true",
+          "startDate": "",
+          "endDate": ""
+        }
+      },
+      "updateskilllevelrequest": {
+        "title": "updateskilllevelrequest",
+        "required": [
+          "resumeSkillLevel",
+          "skillId"
+        ],
+        "type": "object",
+        "properties": {
+          "resumeSkillLevel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skillId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "resumeSkillLevel": 7,
+          "skillId": 31
+        }
+      },
+      "InsertstudentPreferenceRequest": {
+        "title": "InsertstudentPreferenceRequest",
+        "required": [
+          "availability",
+          "currentSalary",
+          "employmentType",
+          "expectedSalary",
+          "isRelocate",
+          "locationPreference",
+          "locations"
+        ],
+        "type": "object",
+        "properties": {
+          "availability": {
+            "type": "string"
+          },
+          "currentSalary": {
+            "type": "string"
+          },
+          "employmentType": {
+            "type": "string"
+          },
+          "expectedSalary": {
+            "type": "string"
+          },
+          "isRelocate": {
+            "type": "string"
+          },
+          "locationPreference": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "availability": "0 - 15 Days",
+          "currentSalary": "31.1",
+          "employmentType": "Contract",
+          "expectedSalary": "44.8",
+          "isRelocate": "true",
+          "locationPreference": [
+            "Lucknow",
+            "Delhi",
+            "Chennai"
+          ],
+          "locations": [
+            "Lucknow",
+            "Delhi",
+            "Chennai"
+          ]
+        }
+      },
+      "updatestudentPreferenceRequest": {
+        "title": "updatestudentPreferenceRequest",
+        "required": [
+          "availability",
+          "currentSalary",
+          "employmentType",
+          "expectedSalary",
+          "isRelocate",
+          "locationPreference",
+          "locations"
+        ],
+        "type": "object",
+        "properties": {
+          "availability": {
+            "type": "string"
+          },
+          "currentSalary": {
+            "type": "string"
+          },
+          "employmentType": {
+            "type": "string"
+          },
+          "expectedSalary": {
+            "type": "string"
+          },
+          "isRelocate": {
+            "type": "string"
+          },
+          "locationPreference": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "availability": "0 - 15 Days",
+          "currentSalary": "31.1",
+          "employmentType": "Contract",
+          "expectedSalary": "44.8",
+          "isRelocate": "true",
+          "locationPreference": [
+            "Lucknow",
+            "Delhi",
+            "Chennai"
+          ],
+          "locations": [
+            "Lucknow",
+            "Delhi",
+            "Chennai"
+          ]
+        }
+      },
+      "updateyoutubecourseWatchTimeProgressRequest": {
+        "title": "updateyoutubecourseWatchTimeProgressRequest",
+        "required": [
+          "courseId",
+          "watchTimeInSec"
+        ],
+        "type": "object",
+        "properties": {
+          "courseId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "watchTimeInSec": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "courseId": 1,
+          "watchTimeInSec": 250
+        }
+      },
+      "updateyoutubeCourseProgressRequest": {
+        "title": "updateyoutubeCourseProgressRequest",
+        "required": [
+          "courseId",
+          "isCourseCompleted"
+        ],
+        "type": "object",
+        "properties": {
+          "courseId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isCourseCompleted": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "courseId": 1,
+          "isCourseCompleted": "True"
+        }
+      },
+      "AddToCartRequest": {
+        "title": "AddToCartRequest",
+        "required": [
+          "assessmentId",
+          "jobId"
+        ],
+        "type": "object",
+        "properties": {
+          "assessmentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "assessmentId": 7,
+          "jobId": 1
+        }
+      },
+      "applycouponcoderequest": {
+        "title": "applycouponcoderequest",
+        "required": [
+          "couponCode",
+          "orderAmount"
+        ],
+        "type": "object",
+        "properties": {
+          "couponCode": {
+            "type": "string"
+          },
+          "orderAmount": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "couponCode": "",
+          "orderAmount": ""
+        }
+      },
+      "makepaymentrequest": {
+        "title": "makepaymentrequest",
+        "required": [
+          "orderId",
+          "orderAmount",
+          "couponId"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string"
+          },
+          "orderAmount": {
+            "type": "string"
+          },
+          "couponId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "orderId": "",
+          "orderAmount": "",
+          "couponId": ""
+        }
+      },
+      "updateUserSkillsLevelRequest": {
+        "title": "updateUserSkillsLevelRequest",
+        "required": [
+          "skillsToUpdate"
+        ],
+        "type": "object",
+        "properties": {
+          "skillsToUpdate": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillsToUpdate"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "skillsToUpdate": [
+            {
+              "skillId": 104,
+              "resumeSkillLevel": 9
+            }
+          ]
+        }
+      },
+      "SkillsToUpdate": {
+        "title": "SkillsToUpdate",
+        "required": [
+          "skillId",
+          "resumeSkillLevel"
+        ],
+        "type": "object",
+        "properties": {
+          "skillId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "resumeSkillLevel": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "skillId": 104,
+          "resumeSkillLevel": 9
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Candidate Registration & Login"
+    },
+    {
+      "name": "LinkedIn auth"
+    },
+    {
+      "name": "Profile"
+    },
+    {
+      "name": "Dashboard"
+    },
+    {
+      "name": "Jobs"
+    },
+    {
+      "name": "Roadmap"
+    },
+    {
+      "name": "Assessment"
+    },
+    {
+      "name": "Payment & Cart"
+    },
+    {
+      "name": "Masters  (drop down apis)"
+    },
+    {
+      "name": "JcurveResume"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container-fluid p-3">
+    <!-- header -->
+    <!-- <nav class="navbar">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <div class="d-flex align-items-center">
+            <img src="<%= jcurveLogo %>" alt="Logo" width="150" class="d-inline-block">
+          </div>
+          <h4 class="text-end">
+            <%= assessmentTitle %> Assessment Report
+          </h4>
+        </div>
+      </div>
+    </nav>
+
+    <hr> -->
+
+    <!-- summary -->
+    <div class="bg-light p-4 rounded-3 mb-4">
+      <h4 class="mb-4 border-bottom pb-2">Assessment Summary</h4>
+
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="d-flex flex-column">
+            <span class="text-muted mb-2">Candidate Name</span>
+            <span class="fw-bold">
+              <%= candidateName %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex flex-column">
+            <span class="text-muted mb-2">Email Address</span>
+            <span class="fw-bold">
+              <%= candidateEmail %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex flex-column">
+            <span class="text-muted mb-2">Completed At</span>
+            <span class="fw-bold">
+              <%= assessmentCompletedAt %>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 bg-white shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="text-muted small mb-2">Score</div>
+              <h3 class="mb-0">
+                <%= candidateScore %>/<%= totalScore %>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 bg-white shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="text-muted small mb-2">Percentage</div>
+              <h3 class="mb-0">
+                <%= scorePercent %>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 bg-white shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="text-muted small mb-2">Status</div>
+              <h3 class="mb-0">
+                <%= assessmentStatus %>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- question and options -->
+    <div class="bg-light p-4 rounded-3 mb-4">
+      <h4 class="mb-4 border-bottom pb-2">Questions</h4>
+
+      <% for (let i=0; i < questions.length; i++) { %>
+        <!-- tags -->
+        <div class="d-flex gap-2 mb-2">
+          <div class="badge bg-secondary-subtle text-dark">Question <%= i + 1 %>
+          </div>
+          <div class="badge bg-danger-subtle text-dark">
+            <%= questions[i].questionType %>
+          </div>
+          <div class="badge bg-primary-subtle text-dark text-end ms-auto">
+            <%= questions[i].answer===questions[i].userAnswer ? `${questions[i].marks}/${questions[i].marks}` :
+              `0/${questions[i].marks}` %>
+          </div>
+        </div>
+
+        <!-- question and options -->
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              <%= questions[i].question %>
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div
+              class="border rounded p-2 mb-2 <%= questions[i].userAnswer === 'A' ? (questions[i].answer === 'A' ? 'border-success' : 'border-danger') : '' %>">
+              <input type="radio" name="question_<%= i %>" value="A" <% if (questions[i].userAnswer==="A" ) { %>checked
+              <% } %>
+                style="<%= questions[i].answer==='A' ? 'accent-color: #198754' : 'accent-color: #dc3545' %>">
+                  <span class="ms-2">
+                    <%= questions[i].optionA %>
+                  </span>
+            </div>
+            <div
+              class="border rounded p-2 mb-2 <%= questions[i].userAnswer === 'B' ? (questions[i].answer === 'B' ? 'border-success' : 'border-danger') : '' %>">
+              <input type="radio" name="question_<%= i %>" value="B" <% if (questions[i].userAnswer==="B" ) { %>checked
+              <% } %> style="<%= questions[i].answer==='B' ? 'accent-color: #198754' : 'accent-color: #dc3545' %>">
+                  <span class="ms-2">
+                    <%= questions[i].optionB %>
+                  </span>
+            </div>
+            <div
+              class="border rounded p-2 mb-2 <%= questions[i].userAnswer === 'C' ? (questions[i].answer === 'C' ? 'border-success' : 'border-danger') : '' %>">
+              <input type="radio" name="question_<%= i %>" value="C" <% if (questions[i].userAnswer==="C" ) { %>checked
+              <% } %> style="<%= questions[i].answer==='C' ? 'accent-color: #198754' : 'accent-color: #dc3545' %>">
+                  <span class="ms-2">
+                    <%= questions[i].optionC %>
+                  </span>
+            </div>
+            <div
+              class="border rounded p-2 mb-2 <%= questions[i].userAnswer === 'D' ? (questions[i].answer === 'D' ? 'border-success' : 'border-danger') : '' %>">
+              <input type="radio" name="question_<%= i %>" value="D" <% if (questions[i].userAnswer==="D" ) { %>checked
+              <% } %> style="<%= questions[i].answer==='D' ? 'accent-color: #198754' : 'accent-color: #dc3545' %>">
+                  <span class="ms-2">
+                    <%= questions[i].optionD %>
+                  </span>
+            </div>
+          </div>
+        </div>
+
+        <% if (i < questions.length - 1) { %>
+          <hr>
+          <% } %>
+            <% } %>
+    </div>
+
+    <!-- trust insights -->
+    <div class="bg-light p-4 rounded-3 mb-4">
+      <h4 class="mb-4 border-bottom pb-2">Trust Insights</h4>
+
+      <div class="row g-4">
+        <!-- Device Info -->
+        <div class="col-md-6">
+          <div class="d-flex align-items-center gap-3 p-3 border rounded bg-white">
+            <i class="bi bi-laptop fs-3"></i>
+            <div>
+              <p class="text-muted mb-1">Device Used</p>
+              <p class="mb-0 fw-medium">Windows PC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location Info -->
+        <div class="col-md-6">
+          <div class="d-flex align-items-center gap-3 p-3 border rounded bg-white">
+            <i class="bi bi-geo-alt fs-3"></i>
+            <div>
+              <p class="text-muted mb-1">Location</p>
+              <p class="mb-0 fw-medium">Hyderabad (Telangana), India</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Violations -->
+        <div class="col-12">
+          <div class="border rounded bg-white">
+            <div class="p-3 border-bottom">
+              <h6 class="mb-0">Violation Summary</h6>
+            </div>
+
+            <div class="p-3">
+              <div class="row g-3">
+                <% const allViolations = [
+                  { eventName: 'IP_VIOLATION', name: 'IP Violation', violationCount: violationsData.find(v => v.eventName === 'IP_VIOLATION')?.violationCount || 0 },
+                  { eventName: 'FULL_SCREEN_VIOLATION', name: 'Full Screen Violation', violationCount: violationsData.find(v => v.eventName === 'FULL_SCREEN_VIOLATION')?.violationCount || 0 },
+                  { eventName: 'TAB_CHANGE_VIOLATION', name: 'Tab Change Violation', violationCount: violationsData.find(v => v.eventName === 'TAB_CHANGE_VIOLATION')?.violationCount || 0 },
+                  { eventName: 'COPY_PASTE_VIOLATION', name: 'Copy Paste Violation', violationCount: violationsData.find(v => v.eventName === 'COPY_PASTE_VIOLATION')?.violationCount || 0 },
+                  { eventName: 'MOUSE_OUT_VIOLATION', name: 'Mouse Out Violation', violationCount: violationsData.find(v => v.eventName === 'MOUSE_OUT_VIOLATION')?.violationCount || 0 }
+                ]; %>
+                <% allViolations.forEach(violation => { %>
+                  <div class="col-md-6">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="badge <%= violation.violationCount > 0 ? 'bg-danger-subtle text-danger' : 'bg-success-subtle text-dark' %> rounded p-2">
+                        <span><% if(violation.violationCount > 0) { %> &#10060; <% } else { %> &#10004; <% } %></span>
+                      </div>
+                      <span><%= violation.name %> <span>(<%= violation.violationCount > 0 ? 'Detected' : 'Not detected' %>)</span></span>
+                    </div>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <!-- <div class="bg-light rounded-3 text-center">
+      <p><small>&copy; 2025 JCurve. All rights reserved.</small></p>
+    </div> -->
+  </div>
+</body>
+
+</html>

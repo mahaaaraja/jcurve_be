@@ -1,0 +1,2130 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Jcurve employer APIs",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://qaapi.jcurve.tech/api/v1",
+      "description": "QA",
+      "variables": {}
+    },
+    {
+      "url": "https://api.jcurve.tech/api/v1",
+      "description": "Production",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/hr/login": {
+      "post": {
+        "tags": [
+          "HR login & Dashboard APIs"
+        ],
+        "summary": "hr login",
+        "operationId": "hrlogin",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/hrloginrequest"
+                  },
+                  {
+                    "example": {
+                      "email": "kavyarao@yopmail.com",
+                      "password": "Kavya@123"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "kavyarao@yopmail.com",
+                "password": "Kavya@123"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/forgotPassword": {
+      "post": {
+        "tags": [
+          "HR login & Dashboard APIs"
+        ],
+        "summary": "forgot password",
+        "operationId": "forgotpassword",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/forgotpasswordrequest"
+                  },
+                  {
+                    "example": {
+                      "email": "kavyarao@yopmail.com"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "email": "kavyarao@yopmail.com"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/hr/getAvailableJobs": {
+      "get": {
+        "tags": [
+          "HR login & Dashboard APIs"
+        ],
+        "summary": "Available jobs",
+        "operationId": "Availablejobs",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/recruitmentMetrics": {
+      "get": {
+        "tags": [
+          "HR login & Dashboard APIs"
+        ],
+        "summary": "Recruitment metrics",
+        "operationId": "Recruitmentmetrics",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/allCandidatesList": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "All candidates list",
+        "operationId": "Allcandidateslist",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/recommendedCandidates/{jobId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "recommended candidates",
+        "operationId": "recommendedcandidates",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/shortListedCandidates": {
+      "post": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "add student to shortlist",
+        "operationId": "addstudenttoshortlist",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/addstudenttoshortlistrequest"
+                  },
+                  {
+                    "example": {
+                      "userId": 78,
+                      "jobId": 1
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "userId": 78,
+                "jobId": 1
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "shortlisted candidates by job",
+        "operationId": "shortlistedcandidatesbyjob",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/shortListedCandidates/{slid}": {
+      "delete": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "remove student from shortlist",
+        "operationId": "removestudentfromshortlist",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slid",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/getskillData/{jobId}/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate skill data",
+        "operationId": "candidateskilldata",
+        "parameters": [
+          {
+            "name": "curriculumId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2956
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/getProfileDetails/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate Profile details",
+        "operationId": "candidateProfiledetails",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2956
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/getCandidateJobProfile/{jobId}/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate Job profile",
+        "operationId": "candidateJobprofile",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2956
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/performanceMetrics/{jobId}/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate Performance Metrics",
+        "operationId": "candidatePerformanceMetrics",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2956
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/candidateAssessmentReport/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate Assessment Report",
+        "operationId": "candidateAssessmentReport",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2956
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/getAssessmentResults/{userId}/{assessmentId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate Assessment results",
+        "operationId": "candidateAssessmentresults",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2074
+            }
+          },
+          {
+            "name": "assessmentId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 52
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/assessmentsList/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate Assessment List",
+        "operationId": "candidateAssessmentList",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2074
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/offerAnalytics/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "candidate Offer Analytics",
+        "operationId": "candidateOfferAnalytics",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 35
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/getJobsDropdownList/{userId}": {
+      "get": {
+        "tags": [
+          "All candidates & candidate details by job APIs"
+        ],
+        "summary": "Jobs dropdown",
+        "operationId": "Jobsdropdown",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 35
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/exportConfig": {
+      "get": {
+        "tags": [
+          "Export APIs"
+        ],
+        "summary": "Get Export configuration",
+        "operationId": "GetExportconfiguration",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Export APIs"
+        ],
+        "summary": "Update export configuration",
+        "operationId": "Updateexportconfiguration",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateexportconfigurationRequest"
+                  },
+                  {
+                    "example": {
+                      "exportOptions": {
+                        "basicCandidateInformation": 1,
+                        "fullName": 1,
+                        "contactInformation": 1,
+                        "currentJobTitle": 1,
+                        "currentJobLocation": 1,
+                        "comprehensiveAndAvailability": 1,
+                        "expectedSalary": 1,
+                        "currentSalary": 1,
+                        "availability": 0,
+                        "earliestStartDate": 1,
+                        "jobFitAndRoleSuitability": 1,
+                        "experienceInYears": 1,
+                        "coreSkills": 1,
+                        "isCareerGapOneYear": 0,
+                        "personalAndWorkPreferance": 1,
+                        "preferredLocation": 1,
+                        "isRelocate": 1,
+                        "others": 1,
+                        "outReach": 1,
+                        "unifiedUnverifiedSkillMatchPercent": 1,
+                        "unifiedVerifiedSkillMatchPercent": 1,
+                        "avgTrainingTime": 1,
+                        "lastWorkingCompany": 1,
+                        "currentJobEndDate": 1,
+                        "resume": 1,
+                        "jcurveResume": 0,
+                        "userResume": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "exportOptions": {
+                  "basicCandidateInformation": 1,
+                  "fullName": 1,
+                  "contactInformation": 1,
+                  "currentJobTitle": 1,
+                  "currentJobLocation": 1,
+                  "comprehensiveAndAvailability": 1,
+                  "expectedSalary": 1,
+                  "currentSalary": 1,
+                  "availability": 0,
+                  "earliestStartDate": 1,
+                  "jobFitAndRoleSuitability": 1,
+                  "experienceInYears": 1,
+                  "coreSkills": 1,
+                  "isCareerGapOneYear": 0,
+                  "personalAndWorkPreferance": 1,
+                  "preferredLocation": 1,
+                  "isRelocate": 1,
+                  "others": 1,
+                  "outReach": 1,
+                  "unifiedUnverifiedSkillMatchPercent": 1,
+                  "unifiedVerifiedSkillMatchPercent": 1,
+                  "avgTrainingTime": 1,
+                  "lastWorkingCompany": 1,
+                  "currentJobEndDate": 1,
+                  "resume": 1,
+                  "jcurveResume": 0,
+                  "userResume": 1
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/jResumeExportConfig/{jobId}/{userId}": {
+      "get": {
+        "tags": [
+          "Export APIs"
+        ],
+        "summary": "JcurveResume Export Configuration",
+        "operationId": "JcurveResumeExportConfiguration",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2956
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/jResumeExportConfig": {
+      "put": {
+        "tags": [
+          "Export APIs"
+        ],
+        "summary": "Update JcurveResume export configuration",
+        "operationId": "UpdateJcurveResumeexportconfiguration",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateJcurveResumeexportconfigurationRequest"
+                  },
+                  {
+                    "example": {
+                      "jobId": 1,
+                      "userId": 2957,
+                      "exportOptions": {
+                        "candidateReferenceId": 0,
+                        "jobRole": 1,
+                        "jobReferenceId": 0,
+                        "generatedDate": 1,
+                        "displayPicture": 0,
+                        "name": 1,
+                        "percentageOfSkillsVerified": 0,
+                        "associatedOrganization": 1,
+                        "stream": 0,
+                        "diversityTags": 1,
+                        "email": 0,
+                        "phoneNumber": 1,
+                        "currentCompensation": 0,
+                        "expectedCompensation": 1,
+                        "noticePeriod": 0,
+                        "currentLocation": 1,
+                        "workMode": 0,
+                        "relocationPreference": 1,
+                        "cumulativeScore": 0,
+                        "verifiedSkills": 1,
+                        "claimedSkills": 0,
+                        "trainingNeeded": 1,
+                        "logisticFit": 0,
+                        "financialFit": 1,
+                        "experienceFit": 0,
+                        "overallSkills": 1,
+                        "technicalSkills": 0,
+                        "appliedTechnicalSkills": 1,
+                        "leadershipSkills": 0,
+                        "professionalSkills": 1,
+                        "interpersonalSkills": 0,
+                        "interviewSkills": 1,
+                        "profileDetails": 0,
+                        "contactInformation": 1,
+                        "compensationDetails": 0,
+                        "locationDetails": 1,
+                        "fitAnalysis": 0,
+                        "matchAnalysis": 1,
+                        "skillGraph": 0
+                      }
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "jobId": 1,
+                "userId": 2957,
+                "exportOptions": {
+                  "candidateReferenceId": 0,
+                  "jobRole": 1,
+                  "jobReferenceId": 0,
+                  "generatedDate": 1,
+                  "displayPicture": 0,
+                  "name": 1,
+                  "percentageOfSkillsVerified": 0,
+                  "associatedOrganization": 1,
+                  "stream": 0,
+                  "diversityTags": 1,
+                  "email": 0,
+                  "phoneNumber": 1,
+                  "currentCompensation": 0,
+                  "expectedCompensation": 1,
+                  "noticePeriod": 0,
+                  "currentLocation": 1,
+                  "workMode": 0,
+                  "relocationPreference": 1,
+                  "cumulativeScore": 0,
+                  "verifiedSkills": 1,
+                  "claimedSkills": 0,
+                  "trainingNeeded": 1,
+                  "logisticFit": 0,
+                  "financialFit": 1,
+                  "experienceFit": 0,
+                  "overallSkills": 1,
+                  "technicalSkills": 0,
+                  "appliedTechnicalSkills": 1,
+                  "leadershipSkills": 0,
+                  "professionalSkills": 1,
+                  "interpersonalSkills": 0,
+                  "interviewSkills": 1,
+                  "profileDetails": 0,
+                  "contactInformation": 1,
+                  "compensationDetails": 0,
+                  "locationDetails": 1,
+                  "fitAnalysis": 0,
+                  "matchAnalysis": 1,
+                  "skillGraph": 0
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/candidateJobComment/{jobId}/{userId}": {
+      "get": {
+        "tags": [
+          "Comment section APIs"
+        ],
+        "summary": "get comments",
+        "operationId": "getcomments",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 2981
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Comment section APIs"
+        ],
+        "summary": "Insert comment",
+        "operationId": "Insertcomment",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "C001P01"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 35
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/InsertcommentRequest"
+                  },
+                  {
+                    "example": {
+                      "comment": "Good candidate"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "comment": "Good candidate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/hr/candidateJobComment/commentId": {
+      "put": {
+        "tags": [
+          "Comment section APIs"
+        ],
+        "summary": "Update comment",
+        "operationId": "Updatecomment",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdatecommentRequest"
+                  },
+                  {
+                    "example": {
+                      "comment": "test"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "comment": "test"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "//hr/candidateJobComment/commentId": {
+      "delete": {
+        "tags": [
+          "Comment section APIs"
+        ],
+        "summary": "New Request",
+        "operationId": "NewRequest",
+        "parameters": [
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "hrloginrequest": {
+        "title": "hrloginrequest",
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "kavyarao@yopmail.com",
+          "password": "Kavya@123"
+        }
+      },
+      "forgotpasswordrequest": {
+        "title": "forgotpasswordrequest",
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "kavyarao@yopmail.com"
+        }
+      },
+      "addstudenttoshortlistrequest": {
+        "title": "addstudenttoshortlistrequest",
+        "required": [
+          "userId",
+          "jobId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "userId": 78,
+          "jobId": 1
+        }
+      },
+      "UpdateexportconfigurationRequest": {
+        "title": "UpdateexportconfigurationRequest",
+        "required": [
+          "exportOptions"
+        ],
+        "type": "object",
+        "properties": {
+          "exportOptions": {
+            "$ref": "#/components/schemas/ExportOptions"
+          }
+        },
+        "example": {
+          "exportOptions": {
+            "basicCandidateInformation": 1,
+            "fullName": 1,
+            "contactInformation": 1,
+            "currentJobTitle": 1,
+            "currentJobLocation": 1,
+            "comprehensiveAndAvailability": 1,
+            "expectedSalary": 1,
+            "currentSalary": 1,
+            "availability": 0,
+            "earliestStartDate": 1,
+            "jobFitAndRoleSuitability": 1,
+            "experienceInYears": 1,
+            "coreSkills": 1,
+            "isCareerGapOneYear": 0,
+            "personalAndWorkPreferance": 1,
+            "preferredLocation": 1,
+            "isRelocate": 1,
+            "others": 1,
+            "outReach": 1,
+            "unifiedUnverifiedSkillMatchPercent": 1,
+            "unifiedVerifiedSkillMatchPercent": 1,
+            "avgTrainingTime": 1,
+            "lastWorkingCompany": 1,
+            "currentJobEndDate": 1,
+            "resume": 1,
+            "jcurveResume": 0,
+            "userResume": 1
+          }
+        }
+      },
+      "ExportOptions": {
+        "title": "ExportOptions",
+        "required": [
+          "basicCandidateInformation",
+          "fullName",
+          "contactInformation",
+          "currentJobTitle",
+          "currentJobLocation",
+          "comprehensiveAndAvailability",
+          "expectedSalary",
+          "currentSalary",
+          "availability",
+          "earliestStartDate",
+          "jobFitAndRoleSuitability",
+          "experienceInYears",
+          "coreSkills",
+          "isCareerGapOneYear",
+          "personalAndWorkPreferance",
+          "preferredLocation",
+          "isRelocate",
+          "others",
+          "outReach",
+          "unifiedUnverifiedSkillMatchPercent",
+          "unifiedVerifiedSkillMatchPercent",
+          "avgTrainingTime",
+          "lastWorkingCompany",
+          "currentJobEndDate",
+          "resume",
+          "jcurveResume",
+          "userResume"
+        ],
+        "type": "object",
+        "properties": {
+          "basicCandidateInformation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fullName": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contactInformation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentJobTitle": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentJobLocation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comprehensiveAndAvailability": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expectedSalary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentSalary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "availability": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "earliestStartDate": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobFitAndRoleSuitability": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "experienceInYears": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "coreSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isCareerGapOneYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "personalAndWorkPreferance": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preferredLocation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isRelocate": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "others": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "outReach": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unifiedUnverifiedSkillMatchPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unifiedVerifiedSkillMatchPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "avgTrainingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastWorkingCompany": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentJobEndDate": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "resume": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jcurveResume": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userResume": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "basicCandidateInformation": 1,
+          "fullName": 1,
+          "contactInformation": 1,
+          "currentJobTitle": 1,
+          "currentJobLocation": 1,
+          "comprehensiveAndAvailability": 1,
+          "expectedSalary": 1,
+          "currentSalary": 1,
+          "availability": 0,
+          "earliestStartDate": 1,
+          "jobFitAndRoleSuitability": 1,
+          "experienceInYears": 1,
+          "coreSkills": 1,
+          "isCareerGapOneYear": 0,
+          "personalAndWorkPreferance": 1,
+          "preferredLocation": 1,
+          "isRelocate": 1,
+          "others": 1,
+          "outReach": 1,
+          "unifiedUnverifiedSkillMatchPercent": 1,
+          "unifiedVerifiedSkillMatchPercent": 1,
+          "avgTrainingTime": 1,
+          "lastWorkingCompany": 1,
+          "currentJobEndDate": 1,
+          "resume": 1,
+          "jcurveResume": 0,
+          "userResume": 1
+        }
+      },
+      "UpdateJcurveResumeexportconfigurationRequest": {
+        "title": "UpdateJcurveResumeexportconfigurationRequest",
+        "required": [
+          "jobId",
+          "userId",
+          "exportOptions"
+        ],
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exportOptions": {
+            "$ref": "#/components/schemas/ExportOptions1"
+          }
+        },
+        "example": {
+          "jobId": 1,
+          "userId": 2957,
+          "exportOptions": {
+            "candidateReferenceId": 0,
+            "jobRole": 1,
+            "jobReferenceId": 0,
+            "generatedDate": 1,
+            "displayPicture": 0,
+            "name": 1,
+            "percentageOfSkillsVerified": 0,
+            "associatedOrganization": 1,
+            "stream": 0,
+            "diversityTags": 1,
+            "email": 0,
+            "phoneNumber": 1,
+            "currentCompensation": 0,
+            "expectedCompensation": 1,
+            "noticePeriod": 0,
+            "currentLocation": 1,
+            "workMode": 0,
+            "relocationPreference": 1,
+            "cumulativeScore": 0,
+            "verifiedSkills": 1,
+            "claimedSkills": 0,
+            "trainingNeeded": 1,
+            "logisticFit": 0,
+            "financialFit": 1,
+            "experienceFit": 0,
+            "overallSkills": 1,
+            "technicalSkills": 0,
+            "appliedTechnicalSkills": 1,
+            "leadershipSkills": 0,
+            "professionalSkills": 1,
+            "interpersonalSkills": 0,
+            "interviewSkills": 1,
+            "profileDetails": 0,
+            "contactInformation": 1,
+            "compensationDetails": 0,
+            "locationDetails": 1,
+            "fitAnalysis": 0,
+            "matchAnalysis": 1,
+            "skillGraph": 0
+          }
+        }
+      },
+      "ExportOptions1": {
+        "title": "ExportOptions1",
+        "required": [
+          "candidateReferenceId",
+          "jobRole",
+          "jobReferenceId",
+          "generatedDate",
+          "displayPicture",
+          "name",
+          "percentageOfSkillsVerified",
+          "associatedOrganization",
+          "stream",
+          "diversityTags",
+          "email",
+          "phoneNumber",
+          "currentCompensation",
+          "expectedCompensation",
+          "noticePeriod",
+          "currentLocation",
+          "workMode",
+          "relocationPreference",
+          "cumulativeScore",
+          "verifiedSkills",
+          "claimedSkills",
+          "trainingNeeded",
+          "logisticFit",
+          "financialFit",
+          "experienceFit",
+          "overallSkills",
+          "technicalSkills",
+          "appliedTechnicalSkills",
+          "leadershipSkills",
+          "professionalSkills",
+          "interpersonalSkills",
+          "interviewSkills",
+          "profileDetails",
+          "contactInformation",
+          "compensationDetails",
+          "locationDetails",
+          "fitAnalysis",
+          "matchAnalysis",
+          "skillGraph"
+        ],
+        "type": "object",
+        "properties": {
+          "candidateReferenceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobRole": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobReferenceId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "generatedDate": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "displayPicture": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "percentageOfSkillsVerified": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "associatedOrganization": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "stream": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "diversityTags": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phoneNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentCompensation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expectedCompensation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "noticePeriod": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentLocation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "relocationPreference": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cumulativeScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "verifiedSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "claimedSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trainingNeeded": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "logisticFit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "financialFit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "experienceFit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "overallSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "technicalSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appliedTechnicalSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "leadershipSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "professionalSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "interpersonalSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "interviewSkills": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profileDetails": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contactInformation": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compensationDetails": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "locationDetails": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fitAnalysis": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "matchAnalysis": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skillGraph": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "candidateReferenceId": 0,
+          "jobRole": 1,
+          "jobReferenceId": 0,
+          "generatedDate": 1,
+          "displayPicture": 0,
+          "name": 1,
+          "percentageOfSkillsVerified": 0,
+          "associatedOrganization": 1,
+          "stream": 0,
+          "diversityTags": 1,
+          "email": 0,
+          "phoneNumber": 1,
+          "currentCompensation": 0,
+          "expectedCompensation": 1,
+          "noticePeriod": 0,
+          "currentLocation": 1,
+          "workMode": 0,
+          "relocationPreference": 1,
+          "cumulativeScore": 0,
+          "verifiedSkills": 1,
+          "claimedSkills": 0,
+          "trainingNeeded": 1,
+          "logisticFit": 0,
+          "financialFit": 1,
+          "experienceFit": 0,
+          "overallSkills": 1,
+          "technicalSkills": 0,
+          "appliedTechnicalSkills": 1,
+          "leadershipSkills": 0,
+          "professionalSkills": 1,
+          "interpersonalSkills": 0,
+          "interviewSkills": 1,
+          "profileDetails": 0,
+          "contactInformation": 1,
+          "compensationDetails": 0,
+          "locationDetails": 1,
+          "fitAnalysis": 0,
+          "matchAnalysis": 1,
+          "skillGraph": 0
+        }
+      },
+      "InsertcommentRequest": {
+        "title": "InsertcommentRequest",
+        "required": [
+          "comment"
+        ],
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "comment": "Good candidate"
+        }
+      },
+      "UpdatecommentRequest": {
+        "title": "UpdatecommentRequest",
+        "required": [
+          "comment"
+        ],
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "comment": "test"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "HR login & Dashboard APIs"
+    },
+    {
+      "name": "All candidates & candidate details by job APIs"
+    },
+    {
+      "name": "Export APIs"
+    },
+    {
+      "name": "Comment section APIs"
+    }
+  ]
+}
