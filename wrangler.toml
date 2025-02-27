@@ -1,5 +1,4 @@
-name = "jcurvebe"
-type = "javascript"  # Or "module" if using ESM
-account_id = "your-cloudflare-account-id"
-workers_dev = true
-main = "server.js"  # Update this to your main entry file
+name = "jcurve"
+type = "javascript"
+main = "server.js"
+compatibility_date = "2025-02-27"
